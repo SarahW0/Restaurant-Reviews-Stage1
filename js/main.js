@@ -1,7 +1,7 @@
 let restaurants, neighborhoods, cuisines;
 var newMap;
 var markers = [];
-
+let deferredPrompt;
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -217,3 +217,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
+
+window.addEventListener("beforeinstallprompt", e => {
+  e.preventDefault();
+});
