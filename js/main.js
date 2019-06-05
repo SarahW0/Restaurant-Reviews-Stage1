@@ -217,7 +217,3 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 } */
-
-window.addEventListener("beforeinstallprompt", e => {
-  e.preventDefault();
-});

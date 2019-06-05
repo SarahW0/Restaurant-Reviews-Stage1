@@ -1,4 +1,11 @@
 @charset "utf-8";
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 /* CSS Document */
 html {
   font-family: Arial, Helvetica, sans-serif;
@@ -197,11 +204,16 @@ nav h1 {
   background-color: #fff;
   border: 2px solid #ccc;
   /* font-family: Arial, sans-serif;*/
-  margin: 15px;
-  min-height: 355px;
-  padding: 0 30px 25px;
+  margin: 15px 5px;
+  min-height: 390px;
+
   text-align: center;
   flex: 0 1 270px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
@@ -238,6 +250,7 @@ nav h1 {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  width: 100%;
 }
 
 /* ====================== Restaurant Details ====================== */
@@ -417,5 +430,11 @@ nav h1 {
 
   #restaurant-hours {
     letter-spacing: -0.05em;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  #restaurants-list li {
+    flex-grow: 1;
   }
 }

@@ -8,6 +8,19 @@ document.addEventListener("DOMContentLoaded", event => {
   initMap();
 });
 
+window.addEventListener("load", event => {
+  setTimeout(function() {
+    self.newMap._onResize();
+  }, 200);
+
+  setTimeout(function() {
+    self.newMap._onResize();
+  }, 500);
+
+  setTimeout(function() {
+    self.newMap._onResize();
+  }, 1000);
+});
 /**
  * Initialize leaflet map
  */
@@ -17,7 +30,7 @@ initMap = () => {
       // Got an error!
       console.error(error);
     } else {
-      self.newMap = L.map("map", {
+      self.newMap = L.map(document.querySelector("#map"), {
         center: [restaurant.latlng.lat, restaurant.latlng.lng],
         zoom: 16,
         scrollWheelZoom: false
@@ -27,7 +40,7 @@ initMap = () => {
         {
           mapboxToken:
             "pk.eyJ1Ijoic2FyYWhqaHciLCJhIjoiY2p3ZGE5NWhpMGVhczN6cWg2YzhubmV0OCJ9.SYH8ULsuEGLoeZzT5UyVhA",
-          maxZoom: 18,
+          maxZoom: 25, //18,
           attribution:
             'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +

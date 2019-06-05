@@ -1,3 +1,4 @@
+/*
 const cacheName = "restaurant-review-stage1-v1";
 const resourceToCache = [
   "/",
@@ -37,4 +38,4 @@ self.addEventListener("fetch", event => {
       return cachedResponse || fetch(event.request);
     })
   );
-});
+});*/
