@@ -361,6 +361,8 @@ nav h1 {
 
   #restaurant-container,
   #reviews-container {
+    border-left: none;
+    border-right: none;
     border-bottom: 1px solid #d9d9d9;
     border-top: 1px solid #fff;
     height: auto;
@@ -405,6 +407,7 @@ nav h1 {
   #inside-map-container {
     width: 100% !important;
     height: 40vh;
+    flex: none;
   }
 
   #restaurant-container {
