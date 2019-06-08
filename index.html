@@ -60,7 +60,15 @@
   <body>
     <header>
       <nav>
-        <a href="/"><img src="img/logo.png" alt="logo"/></a>
+        <a href="/"
+          ><img
+            src="img/logo.png"
+            srcset="img/logo-small.png 1x, img/logo.png 2x"
+            alt="Restaurant Review App Logo"
+          /><span class="screen-reader-only"
+            >Link to Restaurant Review App Home Page</span
+          ></a
+        >
         <h1>Restaurant Reviews</h1>
       </nav>
     </header>
@@ -75,6 +83,7 @@
           <select
             id="neighborhoods-select"
             name="neighborhoods"
+            aria-label="select neighborhoods"
             onchange="updateRestaurants()"
           >
             <option value="all">All Neighborhoods</option>
@@ -82,6 +91,7 @@
           <select
             id="cuisines-select"
             name="cuisines"
+            aria-label="select cuisines"
             onchange="updateRestaurants()"
           >
             <option value="all">All Cuisines</option>

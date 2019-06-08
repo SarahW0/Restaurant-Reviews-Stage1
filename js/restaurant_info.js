@@ -10,15 +10,21 @@
 
   window.addEventListener("load", event => {
     setTimeout(function() {
-      window.newMap._onResize();
+      if (window.newMap) {
+        window.newMap._onResize();
+      }
     }, 200);
 
     setTimeout(function() {
-      window.newMap._onResize();
+      if (window.newMap) {
+        window.newMap._onResize();
+      }
     }, 500);
 
     setTimeout(function() {
-      window.newMap._onResize();
+      if (window.newMap) {
+        window.newMap._onResize();
+      }
     }, 1000);
   });
   /**
@@ -91,9 +97,19 @@
     const address = document.getElementById("restaurant-address");
     address.innerHTML = restaurant.address;
 
-    const image = document.getElementById("restaurant-img");
-    image.className = "restaurant-img";
-    image.src = DBHelper.imageUrlForRestaurant(restaurant);
+    /** Beginning Restaurant Picture */
+    const resURL = DBHelper.imageUrlForRestaurant(restaurant);
+    const imageName = resURL.substring(0, resURL.length - 4);
+
+    const picture = document.getElementById("restaurant-picture");
+    picture.innerHTML = `
+    <source media="(min-width: 760px)" srcset="${imageName}-medium.jpg, ${imageName}.jpg 2x">  
+    <source media="(max-width: 400px)" srcset="${imageName}-medium.jpg, ${imageName}.jpg 2x">  
+    <img id="restaurant-img" class="restaurant-img" src="${imageName}.jpg" alt="${
+      restaurant.name
+    }">
+    `;
+    /** End Restaurant Picture */
 
     const cuisine = document.getElementById("restaurant-cuisine");
     cuisine.innerHTML = restaurant.cuisine_type;
@@ -119,7 +135,7 @@
       row.appendChild(day);
 
       const time = document.createElement("td");
-
+      time.innerHTML = operatingHours[key];
       var timeRes = operatingHours[key].split(",");
       if (timeRes.length === 0) {
         time.innerHTML = operatingHours[key];
