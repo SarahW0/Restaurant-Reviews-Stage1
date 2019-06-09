@@ -95,7 +95,9 @@
     name.innerHTML = restaurant.name;
 
     const address = document.getElementById("restaurant-address");
-    address.innerHTML = restaurant.address;
+    address.innerHTML = `<span class="screen-reader-only">address is</span>${
+      restaurant.address
+    }`;
 
     /** Beginning Restaurant Picture */
     const resURL = DBHelper.imageUrlForRestaurant(restaurant);
@@ -107,12 +109,14 @@
     <source media="(max-width: 400px)" srcset="${imageName}-medium.jpg, ${imageName}.jpg 2x">  
     <img id="restaurant-img" class="restaurant-img" src="${imageName}.jpg" alt="${
       restaurant.name
-    }">
+    } restaurant">
     `;
     /** End Restaurant Picture */
 
     const cuisine = document.getElementById("restaurant-cuisine");
-    cuisine.innerHTML = restaurant.cuisine_type;
+    cuisine.innerHTML = `${
+      restaurant.cuisine_type
+    }<span class="screen-reader-only">cuisine type</span>`;
 
     // fill operating hours
     if (restaurant.operating_hours) {
@@ -185,7 +189,9 @@
     const li = document.createElement("li");
     const name = document.createElement("p");
     name.setAttribute("class", "review-name");
-    name.innerHTML = review.name;
+    name.innerHTML = `<span class="screen-reader-only">Reviewd by</span>${
+      review.name
+    }`;
     li.appendChild(name);
 
     const date = document.createElement("p");
@@ -200,7 +206,9 @@
     for (let i = 0; i < review.rating; i++) {
       star += "❤";
     }
-    rating.innerHTML = `Rating: <span class="review-star">${star}</span>`;
+    rating.innerHTML = `Rating: <span class="screen-reader-only">${
+      review.rating
+    } out of 5</span><span class="review-star" aria-hidden="true">${star}</span>`;
 
     li.appendChild(rating);
 

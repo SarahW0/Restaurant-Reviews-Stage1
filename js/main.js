@@ -72,9 +72,11 @@
    * Initialize leaflet map, called from HTML.
    */
   initMap = () => {
+    var width = window.innerWidth > 0 ? window.innerWidth : screen.width;
+
     window.newMap = L.map("map", {
       center: [40.722216, -73.987501],
-      zoom: 12,
+      zoom: width < 800 ? 11 : 12,
       scrollWheelZoom: false,
       keyboard: false
     });
@@ -192,14 +194,12 @@
     li.append(address);
 
     const more = document.createElement("a");
-    more.innerHTML = `View Details <span class="screen-reader-only">${
+    more.innerHTML = `View Details <span class="screen-reader-only"> Link to view details about ${
       restaurant.name
-    } ${restaurant.neighborhood} ${restaurant.address}</span>`;
+    } restaurant in ${restaurant.neighborhood} and the address is ${
+      restaurant.address
+    }</span>`;
     more.href = DBHelper.urlForRestaurant(restaurant);
-    more.setAttribute(
-      "aria-label",
-      `${restaurant.name} ${restaurant.neighborhood} ${restaurant.address}`
-    );
     li.append(more);
 
     return li;
