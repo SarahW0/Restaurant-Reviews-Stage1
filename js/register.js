@@ -1,16 +1,23 @@
+/**
+ * Service worker registration file
+ */
 let newWorker;
+
+//if browser supports service worker
 if ("serviceWorker" in navigator) {
+  //once document is fully loaded, register service worker
   window.addEventListener("load", () => {
+    //add click event listener to
+    document
+      .getElementById("sw-reload")
+      .addEventListener("click", function(event) {
+        document.getElementById("sw-notification").classList.add("hide");
+        newWorker.postMessage({ action: "skipWaiting" });
+      });
+    //register service worker
     navigator.serviceWorker
       .register("/sw.js")
       .then(reg => {
-        document
-          .getElementById("sw-reload")
-          .addEventListener("click", function(event) {
-            document.getElementById("sw-notification").classList.add("hide");
-            newWorker.postMessage({ action: "skipWaiting" });
-          });
-
         reg.addEventListener("updatefound", () => {
           newWorker = reg.installing;
           newWorker.addEventListener("statechange", () => {

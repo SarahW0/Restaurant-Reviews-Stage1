@@ -1,4 +1,4 @@
-const cacheName = "restaurant-review-stage1-v1";
+const cacheName = "restaurant-review-stage1-v1-4";
 
 //self is the worker here and is the window somewhere else
 self.addEventListener("install", event => {
@@ -32,14 +32,16 @@ self.addEventListener("activate", function(event) {
     caches.keys().then(function(cacheNames) {
       return Promise.all(
         cacheNames
-          .filter(function(cacheName) {
+          .filter(function(cache) {
             // Return true if you want to remove this cache,
             // but remember that caches are shared across
             // the whole origin
-            return cacheName.indexOf("restaurant-review-stage1") >= 0;
+
+            return cache.indexOf("restaurant-review") >= 0;
           })
-          .map(function(cacheName) {
-            return caches.delete(cacheName);
+          .map(function(cache) {
+            console.log("delete:", cache);
+            return caches.delete(cache);
           })
       );
     })
