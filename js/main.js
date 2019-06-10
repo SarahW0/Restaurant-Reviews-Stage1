@@ -171,14 +171,10 @@
     <source media="(max-width: 610px)" srcset="${imageName}-medium.jpg, ${imageName}.jpg 2x">  
     <img src="${imageName}-small.jpg" srcset="${imageName}-medium.jpg 2x" alt="${
       restaurant.name
-    }">
+    } restaurant">
     `;
 
     const li = document.createElement("li");
-    /*const image = document.createElement("img");
-    image.className = "restaurant-img";
-    image.src = DBHelper.imageUrlForRestaurant(restaurant);
-    li.append(image);*/
     li.append(picture);
 
     const name = document.createElement("h1");

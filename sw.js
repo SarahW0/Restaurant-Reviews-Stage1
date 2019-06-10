@@ -27,6 +27,25 @@ self.addEventListener("install", event => {
   );
 });
 
+self.addEventListener("activate", function(event) {
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames
+          .filter(function(cacheName) {
+            // Return true if you want to remove this cache,
+            // but remember that caches are shared across
+            // the whole origin
+            return cacheName.indexOf("restaurant-review-stage1") >= 0;
+          })
+          .map(function(cacheName) {
+            return caches.delete(cacheName);
+          })
+      );
+    })
+  );
+});
+
 self.addEventListener("fetch", event => {
   event.respondWith(
     //find the fetching resource from the cache
@@ -50,4 +69,10 @@ self.addEventListener("fetch", event => {
       );
     })
   );
+});
+
+self.addEventListener("message", function(event) {
+  if (event.data.action === "skipWaiting") {
+    self.skipWaiting();
+  }
 });

@@ -6,7 +6,9 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+*:focus {
+  border: 5px solid red;
+}
 /* CSS Document */
 html {
   font-family: Arial, Helvetica, sans-serif;
@@ -405,6 +407,20 @@ nav h1 {
 
 #restaurant-hours tr:not(:last-child) {
   border-bottom: 1px solid #cdcdcd;
+}
+
+#sw-notification {
+  position: sticky;
+  height: 10vh;
+  bottom: 0;
+  color: white;
+  font-size: 3em;
+  text-align: center;
+  background: #252831;
+}
+
+.hide {
+  display: none;
 }
 /* ====================== Media Query ====================== */
 @media only screen and (max-width: 1200px) {
