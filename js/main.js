@@ -1,3 +1,6 @@
+/**
+ * js functions for the landing page
+ */
 (function() {
   let gRestaurants, gNeighborhoods, gCuisines;
   let gMarkers = [];
@@ -94,6 +97,7 @@
       }
     ).addTo(window.newMap);
 
+    //update restaurants
     updateRestaurants();
   };
 
@@ -157,15 +161,10 @@
    * Create restaurant HTML.
    */
   createRestaurantHTML = restaurant => {
-    /*
-<picture>  
-  <source media="(min-width: 610px)" srcset="1-medium.jpg, 1.jpg 2x">  
-  <img src="1-small.jpg" srcset="1-medium.jpg 2x" alt="a head carved out of wood">
-</picture>
-*/
     const resURL = DBHelper.imageUrlForRestaurant(restaurant);
     const imageName = resURL.substring(0, resURL.length - 4);
 
+    //add restaurant image
     const picture = document.createElement("picture");
     picture.innerHTML = `
     <source media="(max-width: 610px)" srcset="${imageName}-medium.jpg, ${imageName}.jpg 2x">  
@@ -177,18 +176,22 @@
     const li = document.createElement("li");
     li.append(picture);
 
+    //add restaurant name
     const name = document.createElement("h1");
     name.innerHTML = restaurant.name;
     li.append(name);
 
+    //add restaurant neighborhood
     const neighborhood = document.createElement("p");
     neighborhood.innerHTML = restaurant.neighborhood;
     li.append(neighborhood);
 
+    //add restaurant address
     const address = document.createElement("p");
     address.innerHTML = restaurant.address;
     li.append(address);
 
+    //add view details link
     const more = document.createElement("a");
     more.innerHTML = `View Details <span class="screen-reader-only"> Link to view details about ${
       restaurant.name

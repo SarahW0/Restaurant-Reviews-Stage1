@@ -1,6 +1,8 @@
+/**
+ * js functions for the restaurant detail page
+ */
 (function() {
   let gRestaurant;
-
   /**
    * Initialize map as soon as the page is loaded.
    */
@@ -8,6 +10,10 @@
     initMap();
   });
 
+  /**
+   * resize map 3 times to make it fully cover map div element
+   * without these code, the map only covers part of map div element until window is resized
+   */
   window.addEventListener("load", event => {
     setTimeout(function() {
       if (window.newMap) {
@@ -55,7 +61,11 @@
             id: "mapbox.streets"
           }
         ).addTo(window.newMap);
+
+        //create breadcrumb navigation menu
         fillBreadcrumb();
+
+        //add markers to the restaurants on map
         DBHelper.mapMarkerForRestaurant(gRestaurant, window.newMap);
       }
     });
@@ -92,9 +102,11 @@
    * Create restaurant HTML and add it to the webpage
    */
   fillRestaurantHTML = (restaurant = gRestaurant) => {
+    //show restaurant name
     const name = document.getElementById("restaurant-name");
     name.innerHTML = restaurant.name;
 
+    //show restaurant address
     const address = document.getElementById("restaurant-address");
     address.innerHTML = `<span class="screen-reader-only">address is</span>${
       restaurant.address
@@ -114,6 +126,7 @@
     `;
     /** End Restaurant Picture */
 
+    //show restaurant cuisine type
     const cuisine = document.getElementById("restaurant-cuisine");
     cuisine.innerHTML = `${
       restaurant.cuisine_type
