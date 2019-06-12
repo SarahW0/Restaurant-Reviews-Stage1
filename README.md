@@ -9,9 +9,7 @@ you can find a live version of the project [here](https://ecommsupports.com/demo
 
 1. Download/clone this repository https://github.com/wwwgjhxx/Restaurant-Reviews-Stage1.git
 2. Open index.html in the VSC code editor
-3. Run "Open with Live Server" in the editor (You might need to install live server first in your editor)
-
-   By default, the live server uses port 5500. If you like to use other server software, please configure the server to listen to port 5500.  
+3. Run "Open with Live Server" in the editor (You might need to install live server first in your editor)   
 
 ## Leaflet.js and Mapbox:
 
