@@ -19,10 +19,10 @@ This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://w
 
 ## App Features
 
---Responsive web design
---Accessible for screen readers
---All pages stored in browser cache to create a seamless offline experience
---A message will pop up when the service worker is updated (works fine in chrome and firefox but not in edge. Any advice is welcomed)
+  * Responsive web design
+  * Accessible for screen readers
+  * All pages stored in browser cache to create a seamless offline experience
+  * A message will pop up when the service worker is updated (works fine in chrome and firefox but not in edge. Any advice is welcomed)
 
 ## Browser Version
 
