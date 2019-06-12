@@ -52,6 +52,10 @@ self.addEventListener("fetch", event => {
   event.respondWith(
     //find the fetching resource from the cache
     caches.match(event.request.url).then(cachedResponse => {
+      const fetchURL = new URL(event.request.url);
+      if (fetchURL.hostname !== "localhost") {
+        event.request.mode = "no-cors";
+      }
       return (
         cachedResponse ||
         fetch(event.request)
