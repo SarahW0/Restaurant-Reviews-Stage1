@@ -114,7 +114,7 @@
 
     /** Beginning Restaurant Picture */
     const resURL = DBHelper.imageUrlForRestaurant(restaurant);
-    const imageName = resURL.substring(0, resURL.length - 4);
+    const imageName = resURL.substring(1, resURL.length - 4);
 
     const picture = document.getElementById("restaurant-picture");
     picture.innerHTML = `

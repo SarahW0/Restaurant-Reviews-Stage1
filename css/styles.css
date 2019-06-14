@@ -159,15 +159,11 @@ h6 {
   align-content: center;
 }
 
-/*logo link to home page*/
-#banner a {
-  max-width: 80px;
-}
-
 /*logo image*/
 #banner img {
   height: 100%;
   width: auto;
+  max-width: 80px;
 }
 
 /*Page Title*/
